@@ -14,3 +14,18 @@ services:
     volumes:
       - ./docker/php/php.ini:/usr/local/php/php.ini
       - ./src:/var/www/html
+  db:
+    container_name: crm-db
+    build: ./docker/mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+      - crm-db-volume:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel_db
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+volumes:
+  crm-db-volume:
