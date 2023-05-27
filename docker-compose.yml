@@ -11,6 +11,9 @@ services:
   app:
     container_name: crm-app
     build: ./docker/php
+    ports:
+      #vite用のport設定
+      - "5173:5173"
     volumes:
       - ./docker/php/php.ini:/usr/local/php/php.ini
       - ./src:/var/www/html

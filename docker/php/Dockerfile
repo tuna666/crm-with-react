@@ -1,5 +1,8 @@
 FROM php:8.1-fpm-alpine
 
+#vite の npm run dev 時のポート対応
+EXPOSE 5173
+
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
