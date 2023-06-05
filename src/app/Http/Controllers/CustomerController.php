@@ -19,4 +19,11 @@ class CustomerController extends Controller
             'message' => session('message'),
         ]);
     }
+
+    public function show(Customer $customer)
+    {
+        return inertia::render('Customer/Show', [
+            'customer' => $customer,
+        ]);
+    }
 }
