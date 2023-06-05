@@ -10,12 +10,13 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        // Customerモデルを使って、全件取得する
-        $customers = Customer::all();
+        $customers = Customer::paginate(5);
 
         // 取得した結果をinertia.jsを使ってreactのビューに渡す
         return inertia::render('Customer/Index', [
+            'title' => 'Laravel： Vite + Inertia + React で CRUD サンプル',
             'customers' => $customers,
+            'message' => session('message'),
         ]);
     }
 }
