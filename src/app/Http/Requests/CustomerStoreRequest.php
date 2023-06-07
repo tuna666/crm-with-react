@@ -24,7 +24,7 @@ class CustomerStoreRequest extends FormRequest
         return [
             'last_name' => 'required|string|max:255',
             'first_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'nullable|email|max:255',
             'memo' => 'nullable|string|max:255',
         ];
     }
