@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -43,5 +44,23 @@ class CustomerController extends Controller
         return inertia::render('Customer/Show', [
             'customer' => $customer,
         ]);
+    }
+
+    public function edit(Customer $customer)
+    {
+        return inertia::render('Customer/Edit', [
+            'customer' => $customer,
+        ]);
+    }
+
+    public function update(CustomerUpdateRequest $request, Customer $customer)
+    {
+        $customer->last_name = $request->last_name;
+        $customer->first_name = $request->first_name;
+        $customer->email = $request->email;
+        $customer->memo = $request->memo;
+        $customer->save();
+
+        return redirect()->route('customer.index')->with('message', '更新しました。');
     }
 }
