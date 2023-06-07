@@ -63,4 +63,13 @@ class CustomerController extends Controller
 
         return redirect()->route('customer.index')->with('message', '更新しました。');
     }
+
+
+    public function destroy(Request $request, Customer $customer)
+    {
+        $customer->delete();
+        //リクエストからページ番号を取得してリダイレクト
+        $page = $request->page;
+        return redirect()->route('customer.index', ['page' => $page])->with('message', '削除しました。');
+    }
 }
