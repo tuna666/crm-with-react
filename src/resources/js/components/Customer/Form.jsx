@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import Label from "@/Components/Label";
 import {Link, useForm} from "@inertiajs/react";
 import {Inertia} from "@inertiajs/inertia";
 import Loading from "@/Components/Loading";
